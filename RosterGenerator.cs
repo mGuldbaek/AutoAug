@@ -7,7 +7,7 @@ class RosterGenerator
         try
         {
             StreamReader reader = new StreamReader("roster.txt");
-            string line = reader.ReadLine();
+            string line = reader.ReadLine()!;
             while (line != null)
             {
                 string[] temp = line.Split(",");
@@ -17,12 +17,13 @@ class RosterGenerator
                 int playercd = FindSpecCd(playername, playerspec);
                 Player player = new Player(playername, playerclass, playerspec, playercd);
                 roster = roster.Append(player).ToArray();
-                line = reader.ReadLine();
+                line = reader.ReadLine()!;
             }
             reader.Close();
         }
         catch (Exception e)
         {
+            Console.WriteLine(e.StackTrace);
         }
         return roster;
     }
