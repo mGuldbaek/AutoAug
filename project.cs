@@ -57,6 +57,7 @@ class Test
         using StreamWriter writer = new StreamWriter("out/Note.txt");
         writer.WriteLine("\"");
         writer.WriteLine("AugBuffStart");
+        writer.WriteLine("aug |cff33937fDuckievoker|r");
         foreach (var pair in bufflist)
         {
             string line = "";
