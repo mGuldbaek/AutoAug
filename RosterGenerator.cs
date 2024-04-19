@@ -10,12 +10,30 @@ class RosterGenerator
             string line = reader.ReadLine()!;
             while (line != null)
             {
-                string[] temp = line.Split(",");
-                string playername = temp[0];
-                string playerclass = temp[1];
-                string playerspec = temp[2];
+                string[] temp1 = line.Split(";");
+                string[] temp2 = temp1[0].Split(",");
+                string playername = temp2[0];
+                string playerclass = temp2[1];
+                string playerspec = temp2[2];
                 int playercd = FindSpecCd(playername, playerspec);
-                Player player = new Player(playername, playerclass, playerspec, playercd);
+                string[] temp3;
+                int[] interval = new int[20];
+                if (temp1.Length != 1)
+                {
+                    temp3 = temp1[1].Split(",");
+                    for (int i = 0; i < temp3.Length; i++)
+                    {
+                        interval[i] = int.Parse(temp3[i]);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        interval[i] = i * playercd;
+                    }
+                }
+                Player player = new Player(playername, playerclass, playerspec, playercd, interval);
                 roster = roster.Append(player).ToArray();
                 line = reader.ReadLine()!;
             }
