@@ -23,20 +23,27 @@ class Test
             string[] stringarray = [];
             for (int j = 0; j < prio[0].Length; j++)
             {
-                if (stringarray.Length == 4) {
+                if (stringarray.Length == 4)
+                {
                     break;
                 }
-                for (int k = 0; k < players.Length; k++) {
-                    if (stringarray.Length == 4) {
+                for (int k = 0; k < players.Length; k++)
+                {
+                    if (stringarray.Length == 4)
+                    {
                         break;
                     }
-                    if(players[k].Specname.Equals(prio[0][j])) {
-                        if (prio[1][j].Equals("y")) {
+                    if (players[k].Specname.Equals(prio[0][j]))
+                    {
+                        if (prio[1][j].Equals("y"))
+                        {
                             if (players[k].Cduses.Contains(intervals[i]))
                             {
                                 stringarray = stringarray.Append(players[k].Playername).ToArray();
                             }
-                        } else {
+                        }
+                        else
+                        {
                             stringarray = stringarray.Append(players[k].Playername).ToArray();
                         }
                     }
@@ -46,11 +53,13 @@ class Test
         }
         return dictionary;
     }
-    private static void CreateNote(Dictionary<int, string[]> bufflist, Player[] players) {
-        using (StreamWriter writer = new StreamWriter("out/Note.txt")) {
+    private static void CreateNote(Dictionary<int, string[]> bufflist, Player[] players)
+    {
+        using StreamWriter writer = new StreamWriter("out/Note.txt");
         writer.WriteLine("\"");
         writer.WriteLine("AugBuffStart");
-        foreach(var pair in bufflist) {
+        foreach (var pair in bufflist)
+        {
             string line = "";
             int minutes = FindMinutes(pair.Key);
             int seconds = FindSeconds(pair.Key);
@@ -62,17 +71,18 @@ class Test
                 minutestring = "0";
             }
             line += minutestring + $"{minutes}:";
-            if (seconds < 10) {
+            if (seconds < 10)
+            {
                 secondstring = "0";
             }
             line += secondstring + $"{seconds}";
             line += "}" + $"{minutestring}{minutes}:{secondstring}{seconds} ";
             writer.WriteLine(line);
         }
-        }
     }
-    private static void PrintRoster(Player[] roster) {
-        foreach(Player player in roster) 
+    private static void PrintRoster(Player[] roster)
+    {
+        foreach (Player player in roster)
         {
             Console.WriteLine($"player: {player.Playername} plays {player.Classname}, {player.Specname}");
             foreach (int i in player.Cduses)
@@ -81,18 +91,22 @@ class Test
             }
         }
     }
-    private static void PrintBufflist(Dictionary<int, string[]> bufflist) {
-        foreach(var pair in bufflist) {
+    private static void PrintBufflist(Dictionary<int, string[]> bufflist)
+    {
+        foreach (var pair in bufflist)
+        {
             Console.Write($"interval {pair.Key}: {pair.Value[0]}, ");
             Console.Write($"{pair.Value[1]}, ");
             Console.Write($"{pair.Value[2]}, ");
             Console.WriteLine($"{pair.Value[3]}");
         }
     }
-    private static int FindMinutes(int seconds) {
+    private static int FindMinutes(int seconds)
+    {
         return seconds / 60;
     }
-    private static int FindSeconds(int seconds) {
+    private static int FindSeconds(int seconds)
+    {
         return seconds % 60;
     }
 }

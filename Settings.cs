@@ -17,7 +17,9 @@ class Settings
         catch (Exception e)
         {
             Console.WriteLine("No settings found");
-        } finally {
+        }
+        finally
+        {
             intervals = [];
             for (int i = 0; i < 20; i++)
             {

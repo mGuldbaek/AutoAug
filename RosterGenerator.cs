@@ -74,57 +74,33 @@ class RosterGenerator
     }
     private int FindSpecCd(string classname, string specname)
     {
-        switch (specname)
+        return specname switch
         {
-            case "unholy":
-                return 180;
-            case "frostmage":
-                return 120;
-            case "frostdk":
-                return 120;
-            case "havoc":
-                return 120;
-            case "shadow":
-                return 120;
-            case "fire":
-                return 0;
-            case "arcane":
-                return 90;
-            case "sub":
-                return 60;
-            case "ass":
-                return 120;
-            case "outlaw":
-                return 0;
-            case "ret":
-                return 60;
-            case "enhance":
-                return 0;
-            case "bm":
-                return 0;
-            case "mm":
-                return 120;
-            case "dev":
-                return 120;
-            case "aff":
-                return 120;
-            case "demo":
-                return 120;
-            case "destro":
-                return 180;
-            case "ww":
-                return 120;
-            case "fury":
-                return 90;
-            case "arms":
-                return 120;
-            case "feral":
-                return 120;
-            case "boomie":
-                return 180;
-            case "windwalker":
-                return 120;
-        }
-        return -1;
+            "unholy" => 180,
+            "frostmage" => 120,
+            "frostdk" => 120,
+            "havoc" => 120,
+            "shadow" => 120,
+            "fire" => 0,
+            "arcane" => 90,
+            "sub" => 60,
+            "ass" => 120,
+            "outlaw" => 0,
+            "ret" => 60,
+            "enhance" => 0,
+            "bm" => 0,
+            "mm" => 120,
+            "dev" => 120,
+            "aff" => 120,
+            "demo" => 120,
+            "destro" => 180,
+            "ww" => 120,
+            "fury" => 90,
+            "arms" => 120,
+            "feral" => 120,
+            "boomie" => 180,
+            "windwalker" => 120,
+            _ => -1,
+        };
     }
 }
