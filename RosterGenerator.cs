@@ -10,7 +10,12 @@ class RosterGenerator
             string line = reader.ReadLine()!;
             while (line != null)
             {
-                string[] temp1 = line.Split(";");
+                string[] active = line.Split(":");
+                if (active[0].Equals("0")) {
+                    line = reader.ReadLine()!;
+                    continue;
+                }
+                string[] temp1 = active[1].Split(";");
                 string[] temp2 = temp1[0].Split(",");
                 string playername = temp2[0];
                 string playerclass = temp2[1];

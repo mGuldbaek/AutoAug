@@ -17,10 +17,6 @@ class Priority
                 line = reader.ReadLine()!;
             }
             priority = [prio1, prio2];
-            for (int i = 0; i < prio1.Length; i++)
-            {
-                Console.WriteLine($"{priority[0][i]}, {priority[1][i]}");
-            }
             reader.Close();
         }
         catch (Exception e)

@@ -1,5 +1,7 @@
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 class Test
 {
     public static void Main()
@@ -7,12 +9,9 @@ class Test
         RosterGenerator gen = new RosterGenerator();
         Priority priogen = new Priority();
         Player[] roster = gen.GenerateRoster();
-        PrintRoster(roster);
         Settings settings = new Settings();
         int[] intervals = settings.intervals;
-        Console.WriteLine(intervals[0]);
         Dictionary<int, string[]> bufflist = FindSpec(roster, priogen.priority, intervals);
-        PrintBufflist(bufflist);
         CreateNote(bufflist, roster);
     }
     private static Dictionary<int, string[]> FindSpec(Player[] players, string[][] prio, int[] intervals)
@@ -76,9 +75,15 @@ class Test
                 secondstring = "0";
             }
             line += secondstring + $"{seconds}";
-            line += "}" + $"{minutestring}{minutes}:{secondstring}{seconds} ";
+            line += "}" + $"{minutestring}{minutes}:{secondstring}{seconds} |";
+            line += FindClassColor(FindPlayerClass(players, pair.Value[0])) + pair.Value[0] + "|r !1 |";
+            line += FindClassColor(FindPlayerClass(players, pair.Value[1])) + pair.Value[1] + "|r !2 |";
+            line += FindClassColor(FindPlayerClass(players, pair.Value[2])) + pair.Value[2] + "|r !3 |";
+            line += FindClassColor(FindPlayerClass(players, pair.Value[3])) + pair.Value[3] + "|r !4";
             writer.WriteLine(line);
         }
+        writer.WriteLine("AugBuffEnd {v2.0}");
+        writer.WriteLine("\"");
     }
     private static void PrintRoster(Player[] roster)
     {
@@ -108,5 +113,44 @@ class Test
     private static int FindSeconds(int seconds)
     {
         return seconds % 60;
+    }
+    private static string FindClassColor(string classname) {
+        switch(classname) {
+            case "warlock":
+                return "cff8788ee";
+            case "hunter":
+                return "cffaad372";
+            case "warrior":
+                return "cffc69b6d";
+            case "dk":
+                return "cffc41e3a";
+            case "dh":
+                return "cffa330c9";
+            case "priest":
+                return "cfffefefe";
+            case "druid":
+                return "cffff7c0a";
+            case "mage":
+                return "cff3fc7eb";
+            case "evoker":
+                return "cff33937f";
+            case "shaman":
+                return "cff0070dd";
+            case "rogue":
+                return "cfffff468";
+            case "paladin":
+                return "cfff48cba";
+            case "monk":
+                return "cff00ff98";
+        }
+        throw new Exception("classcolor not found");
+    }
+    private static string FindPlayerClass(Player[] roster, string playername) {
+        foreach(Player player in roster) {
+            if (playername.Equals(player.Playername)) {
+                return player.Classname;
+            }
+        }
+        throw new Exception("Player not found in roster");
     }
 }
