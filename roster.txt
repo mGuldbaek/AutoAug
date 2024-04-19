@@ -1,2 +1,0 @@
-gold,mage,frost
-gold,mage,frost;2,500

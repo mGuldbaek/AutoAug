@@ -1,7 +1,7 @@
 unholy,y
 sub,y
-arcane,y
 feral,y
+arcane,y
 destro,y
 ass,y
 havoc,y

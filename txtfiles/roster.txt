@@ -1,0 +1,17 @@
+Hyberw,warrior,fury
+Seth,dk,unholy
+Runeklanen,shaman,enhance
+Leeta,monk,windwalker
+Dissolved,rogue,sub;3,150;4,240;5,330;6,420;7,510
+Maximuszj,rogue,outlaw
+Zhanshou,rogue,ass
+Bannedparser,paladin,ret
+Stelies,paladin,ret
+Kýrama,druid,feral
+Huntersnus,hunter,bm
+Alèxis,warlock,demo
+Guldbäck,warlock,demo
+Shakkh,mage,arcane
+Glepnir,druid,boomie
+Jojoseaweed,priest,shadow
+Donkeyen,hunter,bm

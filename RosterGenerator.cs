@@ -6,7 +6,7 @@ class RosterGenerator
         Player[] roster = { };
         try
         {
-            StreamReader reader = new StreamReader("roster.txt");
+            StreamReader reader = new StreamReader("txtfiles/roster.txt");
             string line = reader.ReadLine()!;
             while (line != null)
             {
@@ -78,19 +78,10 @@ class RosterGenerator
         {
             case "unholy":
                 return 180;
-            case "frost":
-                if (classname.Equals("mage"))
-                {
-                    return 120;
-                }
-                else if (classname.Equals("dk"))
-                {
-                    return 120;
-                }
-                else
-                {
-                    return -1;
-                }
+            case "frostmage":
+                return 120;
+            case "frostdk":
+                return 120;
             case "havoc":
                 return 120;
             case "shadow":
@@ -131,6 +122,8 @@ class RosterGenerator
                 return 120;
             case "boomie":
                 return 180;
+            case "windwalker":
+                return 120;
         }
         return -1;
     }

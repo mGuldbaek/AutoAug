@@ -5,7 +5,7 @@ class Priority
     {
         try
         {
-            StreamReader reader = new StreamReader("priority.txt");
+            StreamReader reader = new StreamReader("txtfiles/priority.txt");
             string line = reader.ReadLine()!;
             string[] prio1 = [];
             string[] prio2 = [];

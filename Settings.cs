@@ -1,24 +1,15 @@
 class Settings
 {
-    int[] intervals;
+    public int[] intervals = [];
     public Settings()
     {
         try
         {
-            StreamReader reader = new StreamReader("settings.txt");
+            StreamReader reader = new StreamReader("txtfiles/settings.txt");
             string line = reader.ReadLine()!;
-            int i = 0;
-            if (line == null)
-            {
-                for (; i < 20; i++)
-                {
-                    intervals![i] = i * 30;
-                }
-            }
             while (line != null)
             {
-                intervals![i] = int.Parse(line);
-                i += 1;
+                intervals = intervals.Append(int.Parse(line)).ToArray();
                 line = reader.ReadLine()!;
             }
             reader.Close();
@@ -26,12 +17,11 @@ class Settings
         catch (Exception e)
         {
             Console.WriteLine("No settings found");
-        }
-        if (intervals == null)
-        {
+        } finally {
+            intervals = [];
             for (int i = 0; i < 20; i++)
             {
-                intervals![i] = i * 30;
+                intervals = intervals.Append(i * 30).ToArray();
             }
         }
     }
