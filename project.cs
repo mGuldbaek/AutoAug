@@ -9,13 +9,10 @@ class Test
         RosterGenerator gen = new RosterGenerator();
         Priority priogen = new Priority();
         Player[] roster = gen.GenerateRoster();
-        PrintRoster(roster);
-        /*
         Settings settings = new Settings();
         int[] intervals = settings.intervals;
         Dictionary<int, string[]> bufflist = FindSpec(roster, priogen.priority, intervals);
         CreateNote(bufflist, roster);
-        */
     }
     private static Dictionary<int, string[]> FindSpec(Player[] players, string[][] prio, int[] intervals)
     {
