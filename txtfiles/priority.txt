@@ -8,6 +8,7 @@ havoc,y
 boomie,y
 shadow,y
 frostmage,y
+demo,y
 dev,y
 aff,y
 mm,y
@@ -19,3 +20,12 @@ fire,n
 ret,n
 arms,n
 fury,n
+feral,n
+frostmage,n
+shadow,n
+boomie,n
+destro,n
+demo,n
+ass,n
+arcane,n
+unholy,n

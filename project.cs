@@ -6,12 +6,14 @@ class Test
 {
     public static void Main()
     {
+        SortRoster();
         RosterGenerator gen = new RosterGenerator();
         Priority priogen = new Priority();
         Player[] roster = gen.GenerateRoster();
         Settings settings = new Settings();
         int[] intervals = settings.intervals;
         Dictionary<int, string[]> bufflist = FindSpec(roster, priogen.priority, intervals);
+        PrintBufflist(bufflist);
         CreateNote(bufflist, roster);
     }
     private static Dictionary<int, string[]> FindSpec(Player[] players, string[][] prio, int[] intervals)
@@ -153,5 +155,31 @@ class Test
             }
         }
         throw new Exception("Player not found in roster");
+    }
+    private static void SortRoster() {
+        StreamReader reader = new StreamReader("txtfiles/roster.txt");
+        string line = reader.ReadLine()!;
+        string[] active = [];
+        string[] bench = [];
+        while (line != null)
+        {
+            string mod = line.Split(":")[0];
+            string p = line.Split(":")[1];
+            if (mod.Equals("0")) {
+                bench = bench.Append($"{mod}:{p}").ToArray();
+            } else {
+                active = active.Append($"{mod}:{p}").ToArray();
+            }
+            line = reader.ReadLine()!;
+        }
+        reader.Close();
+        using StreamWriter writer = new StreamWriter("txtfiles/roster.txt");
+        foreach(string player in active) {
+            writer.WriteLine(player);
+        }
+        foreach(string player in bench) {
+            writer.WriteLine(player);
+        }
+        writer.Close();
     }
 }

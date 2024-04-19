@@ -20,7 +20,7 @@ class RosterGenerator
                 string playername = temp2[0];
                 string playerclass = temp2[1];
                 string playerspec = temp2[2];
-                int playercd = FindSpecCd(playerclass, playerspec);
+                int playercd = FindSpecCd(playerspec);
                 int[] interval = [];
                 if (temp1.Length != 1)
                 {
@@ -67,7 +67,7 @@ class RosterGenerator
         }
         return roster;
     }
-    private int FindSpecCd(string classname, string specname)
+    private int FindSpecCd(string specname)
     {
         return specname switch
         {
