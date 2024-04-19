@@ -1,8 +1,8 @@
 1:Hyberw,warrior,fury
-1:Seth,dk,unholy
+1:Seth,dk,unholy;200
 1:Runeklanen,shaman,enhance
 1:Leeta,monk,windwalker
-1:Dissolved,rogue,sub;3,150;4,240;5,330;6,420;7,510
+1:Dissolved,rogue,sub;0,60
 1:Maximuszj,rogue,outlaw
 1:Zhanshou,rogue,ass
 1:Bannedparser,paladin,ret

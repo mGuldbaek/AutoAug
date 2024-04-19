@@ -24,36 +24,26 @@ class RosterGenerator
                 int[] interval = [];
                 if (temp1.Length != 1)
                 {
-                    string[] temp3 = [];
-                    for (int i = 1; i < temp1.Length; i++)
+                    int[] intarray = [];
+                    foreach (string customcd in temp1[1].Split(","))
                     {
-                        temp3 = temp3.Append(temp1[i]).ToArray();
-                    }
-                    int[] intarray1 = [];
-                    int[] intarray2 = [];
-                    foreach (string customcd in temp3)
-                    {
-                        string[] stringarray = customcd.Split(",");
-                        intarray1 = intarray1.Append(int.Parse(stringarray[0])).ToArray();
-                        intarray2 = intarray2.Append(int.Parse(stringarray[1])).ToArray();
+                        intarray = intarray.Append(int.Parse(customcd)).ToArray();
                     }
                     int k = 0;
-                    for (int i = 0; i < 10; i++)
-                    {
-                        if (intarray1.Contains(i + 1))
-                        {
-                            interval = interval.Append(intarray2[k]).ToArray();
-                            k += 1;
-                        }
-                        else
-                        {
-                            if (i == 0)
-                            {
+                    for(int i = 0; i < 10; i++) {
+                        if (i == 0) {
+                            if (k < intarray.Length && intarray[0] < playercd) {
+                                interval = interval.Append(intarray[k]).ToArray();
+                                k += 1;
+                            } else {
                                 interval = interval.Append(0).ToArray();
                             }
-                            else
-                            {
-                                interval = interval.Append(interval[i - 1] + playercd).ToArray();
+                        } else {
+                            if (k < intarray.Length && intarray[k] < interval[i-1] + playercd * 2) {
+                                interval = interval.Append(intarray[k]).ToArray();
+                                k += 1;
+                            } else {
+                                interval = interval.Append(interval[i-1] + playercd).ToArray();
                             }
                         }
                     }
@@ -88,7 +78,7 @@ class RosterGenerator
             "shadow" => 120,
             "fire" => 0,
             "arcane" => 90,
-            "sub" => 60,
+            "sub" => 90,
             "ass" => 120,
             "outlaw" => 0,
             "ret" => 60,
