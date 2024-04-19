@@ -7,6 +7,10 @@ class Test
         Priority priogen = new Priority();
         string[][] prio = priogen.priority;
         Player[] roster = gen.GenerateRoster();
+        foreach (int i in roster[0].Cduses)
+        {
+            Console.WriteLine($"cd : {i}");
+        }
 
     }
     private Dictionary<int, string[]> FindSpec(Player[] players, string[][] prio, int[] intervals)

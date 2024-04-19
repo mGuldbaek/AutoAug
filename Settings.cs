@@ -12,12 +12,12 @@ class Settings
             {
                 for (; i < 20; i++)
                 {
-                    intervals[i] = i * 30;
+                    intervals![i] = i * 30;
                 }
             }
             while (line != null)
             {
-                intervals[i] = int.Parse(line);
+                intervals![i] = int.Parse(line);
                 i += 1;
                 line = reader.ReadLine()!;
             }
@@ -26,9 +26,12 @@ class Settings
         catch (Exception e)
         {
             Console.WriteLine("No settings found");
+        }
+        if (intervals == null)
+        {
             for (int i = 0; i < 20; i++)
             {
-                intervals[i] = i * 30;
+                intervals![i] = i * 30;
             }
         }
     }

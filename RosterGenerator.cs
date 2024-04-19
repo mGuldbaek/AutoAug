@@ -15,22 +15,49 @@ class RosterGenerator
                 string playername = temp2[0];
                 string playerclass = temp2[1];
                 string playerspec = temp2[2];
-                int playercd = FindSpecCd(playername, playerspec);
-                string[] temp3;
-                int[] interval = new int[20];
+                int playercd = FindSpecCd(playerclass, playerspec);
+                int[] interval = [];
                 if (temp1.Length != 1)
                 {
-                    temp3 = temp1[1].Split(",");
-                    for (int i = 0; i < temp3.Length; i++)
+                    string[] temp3 = [];
+                    for (int i = 1; i < temp1.Length; i++)
                     {
-                        interval[i] = int.Parse(temp3[i]);
+                        temp3 = temp3.Append(temp1[i]).ToArray();
+                    }
+                    int[] intarray1 = [];
+                    int[] intarray2 = [];
+                    foreach (string customcd in temp3)
+                    {
+                        string[] stringarray = customcd.Split(",");
+                        intarray1 = intarray1.Append(int.Parse(stringarray[0])).ToArray();
+                        intarray2 = intarray2.Append(int.Parse(stringarray[1])).ToArray();
+                    }
+                    int k = 0;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (intarray1.Contains(i + 1))
+                        {
+                            interval = interval.Append(intarray2[k]).ToArray();
+                            k += 1;
+                        }
+                        else
+                        {
+                            if (i == 0)
+                            {
+                                interval = interval.Append(0).ToArray();
+                            }
+                            else
+                            {
+                                interval = interval.Append(interval[i - 1] + playercd).ToArray();
+                            }
+                        }
                     }
                 }
                 else
                 {
                     for (int i = 0; i < 10; i++)
                     {
-                        interval[i] = i * playercd;
+                        interval = interval.Append(i * playercd).ToArray();
                     }
                 }
                 Player player = new Player(playername, playerclass, playerspec, playercd, interval);

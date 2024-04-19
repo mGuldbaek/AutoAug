@@ -4,7 +4,7 @@ class Player
     public string Classname;
     public string Specname;
     public int Cd;
-    int[] Cduses;
+    public int[] Cduses;
     public Player(string playername, string classname, string specname, int cd, int[] cduses)
     {
         Playername = playername;
